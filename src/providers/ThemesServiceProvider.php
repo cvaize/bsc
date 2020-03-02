@@ -7,29 +7,30 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ThemesServiceProvider extends BaseServiceProvider
 {
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
+	/**
+	 * Привязка к контейнеру.
+	 *
+	 * @return void
+	 */
     public function register()
     {
         $this->mergeConfigFrom($this->configPath(), 'themes');
+    }
 
+	/**
+	 * Загрузка сервисов после регистрации.
+	 *
+	 * @return void
+	 */
+    public function boot()
+    {
 		$views = [
 			resource_path('views/themes/'.config('themes.theme', 'custom')),
 			__DIR__ . '/../resources/views',
 		];
 
 		$this->loadViewsFrom($views, 'theme');
-    }
 
-    /**
-     * Register the config for publishing
-     *
-     */
-    public function boot()
-    {
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$this->configPath() => config_path('themes.php')], 'themes');
         }

@@ -22,7 +22,9 @@
     "extra": {
         "laravel": {
             "providers": [
-                "BSC\\Providers\\ThemesServiceProvider"
+                "BSC\\Providers\\DefineServiceProvider",
+                "BSC\\Providers\\ThemesServiceProvider",
+                "BSC\\Providers\\RoutesServiceProvider"
             ]
         }
     },
