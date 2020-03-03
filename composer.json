@@ -24,7 +24,7 @@
             "providers": [
                 "BSC\\Providers\\DefineServiceProvider",
                 "BSC\\Providers\\ThemesServiceProvider",
-                "BSC\\Providers\\RoutesServiceProvider"
+                "BSC\\Providers\\AppServiceProvider"
             ]
         }
     },
