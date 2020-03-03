@@ -6,7 +6,7 @@
 
 ### Инструкция по установке
 - Установка пакета `composer require cvaize/bsc`
-- Миграция таблиц `php artisan migrate`
+- Миграция таблиц `php artisan bsc:migrate`
 
 ### Темы, views
 После установки вы можете опубликовать настройки темы и изменить их под себя `config/themes.php` 

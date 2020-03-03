@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Models\Pages;
+namespace BSC\App\Models\Pages;
 
+use BSC\Database\Migrate;
+use BSC\Database\MigrateInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 
 
-class Page extends Model
+class Page extends Model implements MigrateInterface
 {
 	protected $table = 'bsc_pages';
 
@@ -70,5 +74,21 @@ class Page extends Model
 		}
 
 		return $query;
+	}
+
+	public function migrate(){
+		(new Migrate('bsc_pages'))->createOrTable(function (Blueprint $table, Migrate $migrate){
+			$migrate->createOrChange($table->bigIncrements('id'));
+			$migrate->createOrChange($table->string('alias'));
+			$migrate->createOrChange($table->string('path', 1000));
+			$migrate->createOrChange($table->string('h1')->nullable());
+			$migrate->createOrChange($table->unsignedBigInteger('modelable_id')->nullable());
+			$migrate->createOrChange($table->string('modelable_type')->nullable());
+			$migrate->createOrChange($table->string('meta_title')->nullable());
+			$migrate->createOrChange($table->string('meta_description')->nullable());
+			$migrate->createOrChange($table->string('meta_keywords')->nullable());
+			$migrate->createOrChange($table->dateTime('published_at')->nullable());
+			!Schema::hasColumn('bsc_pages', 'created_at') && $table->timestamps();
+		});
 	}
 }
