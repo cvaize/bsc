@@ -7,7 +7,8 @@ return [
 	],
 
     'models' => [
-    	'Page'=>'BSC\\App\\Models\\Pages\\Page'
+		'User'=>'BSC\\App\\Models\\Users\\User',
+    	'Page'=>'BSC\\App\\Models\\Pages\\Page',
 	],
 
 ];

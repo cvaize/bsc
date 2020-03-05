@@ -6,7 +6,6 @@ use BSC\Database\Migrate;
 use BSC\Database\MigrateInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 
 
@@ -77,18 +76,37 @@ class Page extends Model implements MigrateInterface
 	}
 
 	public function migrate(){
-		(new Migrate('bsc_pages'))->createOrTable(function (Blueprint $table, Migrate $migrate){
+		(new Migrate($this->getTable()))->createOrTable(function (Blueprint $table, Migrate $migrate){
+			// Тут только создание колонок, никаких индексов и связей
+			// Создание тут связей/индексов повлечет за собой ошибку
 			$migrate->createOrChange($table->bigIncrements('id'));
 			$migrate->createOrChange($table->string('alias'));
-			$migrate->createOrChange($table->string('path', 1000));
+			$migrate->createOrChange($table->string('path'));
 			$migrate->createOrChange($table->string('h1')->nullable());
 			$migrate->createOrChange($table->unsignedBigInteger('modelable_id')->nullable());
+			$migrate->createOrChange($table->unsignedBigInteger('modelable1_id')->nullable());
+			$migrate->createOrChange($table->unsignedBigInteger('modelable2_id')->nullable());
 			$migrate->createOrChange($table->string('modelable_type')->nullable());
 			$migrate->createOrChange($table->string('meta_title')->nullable());
 			$migrate->createOrChange($table->string('meta_description')->nullable());
 			$migrate->createOrChange($table->string('meta_keywords')->nullable());
 			$migrate->createOrChange($table->dateTime('published_at')->nullable());
-			!Schema::hasColumn('bsc_pages', 'created_at') && $table->timestamps();
+			!$migrate->hasColumn('created_at') && $table->timestamps();
+		}, function (Blueprint $table, Migrate $migrate){
+			$migrate->unique(['alias']);
+			$migrate->unique(['path']);
+			$migrate->unique(['h1']);
+			$migrate->unique(['meta_title']);
+			$migrate->index(['modelable_id']);
+			$migrate->index(['modelable_type']);
+			$migrate->index(['modelable_id', 'modelable_type']);
+		}, function (Blueprint $table, Migrate $migrate){
+			// Пример создания/удаления связи
+//			$migrate->foreign('modelable_id', function ($foreign){
+//				$foreign->references('id')->on('bsc_users')
+//					->onUpdate('cascade')->onDelete('cascade');
+//			});
+//			$migrate->dropForeign('modelable_id');
 		});
 	}
 }
