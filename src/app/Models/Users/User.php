@@ -4,10 +4,7 @@ namespace BSC\App\Models\Users;
 
 use BSC\Database\Migrate;
 use BSC\Database\MigrateInterface;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
+use BSC\App\Models\Model;
 use Illuminate\Database\Schema\Blueprint;
 
 
