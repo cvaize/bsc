@@ -1,3 +1,3 @@
 <?php
 
-Route::get('/', config('define.controllers.StaticController').'@welcome');
+Route::get('/', '\BscStaticController@welcome');

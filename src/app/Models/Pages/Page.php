@@ -10,41 +10,6 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Carbon;
 
 
-/**
- * BSC\App\Models\Pages\Page
- *
- * @property int $id
- * @property string $alias
- * @property string $path
- * @property string|null $h1
- * @property int|null $modelable_id
- * @property string|null $modelable_type
- * @property string|null $meta_title
- * @property string|null $meta_description
- * @property string|null $meta_keywords
- * @property \Illuminate\Support\Carbon|null $published_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page filter($frd)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page query()
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereAlias($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereH1($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereMetaDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereMetaKeywords($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereMetaTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereModelable1Id($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereModelable2Id($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereModelableId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereModelableType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page wherePath($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page wherePublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\BSC\App\Models\Pages\Page whereUpdatedAt($value)
- * @mixin \Eloquent
- */
 class Page extends Model implements MigrateInterface
 {
 	protected $table = 'bsc_pages';
@@ -63,7 +28,7 @@ class Page extends Model implements MigrateInterface
 		'updated_at',
 	];
 
-	public function migrate()
+	public function migrate(): void
 	{
 		(new Migrate($this->getTable()))->createOrTable(function (Blueprint $table, Migrate $migrate) {
 			// Тут только создание колонок, никаких индексов и связей

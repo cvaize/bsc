@@ -38,7 +38,7 @@ class MigrateCommand extends Command
      */
     public function handle()
     {
-    	$models = config('define.models');
+		$models = config('bsc.aliases', []);
     	foreach ($models as $modelString){
 			$model = new $modelString();
 			if($model instanceof MigrateInterface){

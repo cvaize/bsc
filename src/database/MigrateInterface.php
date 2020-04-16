@@ -6,5 +6,5 @@ namespace BSC\Database;
 
 interface MigrateInterface
 {
-	public function migrate();
+	public function migrate(): void;
 }

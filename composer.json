@@ -10,7 +10,8 @@
     "require": {
         "php": "^7.2.5",
         "illuminate/support": "^7.0|^8.0",
-        "intervention/image": "^2.5"
+        "intervention/image": "^2.5",
+        "doctrine/dbal": "^2.10"
     },
     "require-dev": {
         "laravel/framework": "^7.0|^8.0"
@@ -23,8 +24,6 @@
     "extra": {
         "laravel": {
             "providers": [
-                "BSC\\Providers\\DefineServiceProvider",
-                "BSC\\Providers\\ThemesServiceProvider",
                 "BSC\\Providers\\AppServiceProvider"
             ]
         }
