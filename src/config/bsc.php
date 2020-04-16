@@ -15,10 +15,11 @@ return [
 		'BscManufacturer'=>'BSC\\App\\Models\\Manufacturers\\Manufacturer',
 		'BscCategory'=>'BSC\\App\\Models\\Categories\\Category',
 		'BscProduct'=>'BSC\\App\\Models\\Products\\Product',
-		'BscProductsToCategories'=>'BSC\\App\\Models\\Products\\ProductsToCategories',
+		'BscProductToCategory'=> 'BSC\\App\\Models\\Products\\ProductToCategory',
 		'BscAttrGroup'=>'BSC\\App\\Models\\Attrs\\AttrGroup',
 		'BscAttr'=>'BSC\\App\\Models\\Attrs\\Attr',
-		'AttrValue'=>'BSC\\App\\Models\\Attrs\\AttrValue',
+		'BscAttrValue'=>'BSC\\App\\Models\\Attrs\\AttrValue',
+		'BscAttrToCategory'=>'BSC\\App\\Models\\Attrs\\AttrToCategory',
 	],
 
 ];

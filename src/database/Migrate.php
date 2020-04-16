@@ -65,7 +65,6 @@ class Migrate
 
 	public function createOrChange(ColumnDefinition $column): ColumnDefinition
 	{
-		dump(Schema::hasColumn($this->tableName, $column->get('name')), $this->tableName, $column->get('name'));
 		if (Schema::hasColumn($this->tableName, $column->get('name'))) {
 			$column->change();
 		}
