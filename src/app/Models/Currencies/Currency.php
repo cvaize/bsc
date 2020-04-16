@@ -10,7 +10,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class Currency extends Model implements MigrateInterface
 {
-	protected $table = 'bsc_currencies';
+	protected $table = 'currencies';
 
 	protected $fillable = [
 		'name',

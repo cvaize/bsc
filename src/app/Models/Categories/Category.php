@@ -10,7 +10,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class Category extends Model implements MigrateInterface
 {
-	protected $table = 'bsc_categories';
+	protected $table = 'categories';
 
 	protected $perPage = 12;
 

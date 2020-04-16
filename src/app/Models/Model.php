@@ -8,6 +8,12 @@ use Illuminate\Support\Str;
 
 class Model extends DefaultModel
 {
+
+	public function getTable()
+	{
+		return 'bsc_'.parent::getTable();
+	}
+
 	protected function checkUnique(string $column, string $alias): bool
 	{
 		return 0 === $this->where($column, $alias)->count();

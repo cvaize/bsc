@@ -10,7 +10,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class User extends Model implements MigrateInterface
 {
-	protected $table = 'bsc_users';
+	protected $table = 'users';
 
 	protected $fillable = [
 		'unique_name',

@@ -12,7 +12,7 @@ use Illuminate\Support\Carbon;
 
 class Page extends Model implements MigrateInterface
 {
-	protected $table = 'bsc_pages';
+	protected $table = 'pages';
 
 	protected $fillable = [
 		'modelable_id', // Привязка к модели или товару
@@ -55,7 +55,7 @@ class Page extends Model implements MigrateInterface
 		}, function (Blueprint $table, Migrate $migrate) {
 			// Пример создания/удаления связи
 //			$migrate->foreign('modelable_id', function ($foreign){
-//				$foreign->references('id')->on('bsc_users')
+//				$foreign->references('id')->on('users')
 //					->onUpdate('cascade')->onDelete('cascade');
 //			});
 //			$migrate->dropForeign('modelable_id');

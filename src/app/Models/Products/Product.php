@@ -10,7 +10,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class Product extends Model implements MigrateInterface
 {
-	protected $table = 'bsc_products';
+	protected $table = 'products';
 
 	protected $fillable = [
 		'ordering',

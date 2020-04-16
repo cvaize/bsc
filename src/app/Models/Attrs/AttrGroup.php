@@ -10,7 +10,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class AttrGroup extends Model implements MigrateInterface
 {
-	protected $table = 'bsc_attr_groups';
+	protected $table = 'attr_groups';
 
 	protected $fillable = [
 		'name',

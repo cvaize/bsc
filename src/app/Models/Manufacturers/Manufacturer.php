@@ -10,7 +10,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class Manufacturer extends Model implements MigrateInterface
 {
-	protected $table = 'bsc_manufacturers';
+	protected $table = 'manufacturers';
 
 	protected $perPage = 20;
 

@@ -10,7 +10,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class Attr extends Model implements MigrateInterface
 {
-	protected $table = 'bsc_attrs';
+	protected $table = 'attrs';
 
 	protected $fillable = [
 		'name',

@@ -8,14 +8,16 @@ use BSC\App\Models\Model;
 use Illuminate\Database\Schema\Blueprint;
 
 
-class ProductToCategory extends Model implements MigrateInterface
+class ProductAttr extends Model implements MigrateInterface
 {
-	protected $table = 'bsc_products_to_categories';
+	protected $table = 'products_attrs';
 
 	protected $fillable = [
 		'product_id',
-		'category_id',
 		'ordering',
+		'price',
+		'count',
+		'ean',
 	];
 
 	public $timestamps = false;
@@ -25,19 +27,17 @@ class ProductToCategory extends Model implements MigrateInterface
 		(new Migrate($this->getTable()))->createOrTable(function (Blueprint $table, Migrate $migrate){
 			// Тут только создание колонок, никаких индексов и связей
 			// Создание тут связей/индексов повлечет за собой ошибку
+			$migrate->createOrChange($table->id('id'));
 			$migrate->createOrChange($table->unsignedBigInteger('product_id'));
-			$migrate->createOrChange($table->unsignedInteger('category_id'));
 			$migrate->createOrChange($table->unsignedBigInteger('ordering')->default(0));
+			$migrate->createOrChange($table->unsignedDecimal('price'));
+			$migrate->createOrChange($table->unsignedInteger('count')->default(0));
+			$migrate->createOrChange($table->string('ean', 32)->nullable());
 		}, function (Blueprint $table, Migrate $migrate){
 			$product = new \BscProduct();
-			$category = new \BscCategory();
 
 			$migrate->foreign('product_id', function ($foreign) use ($product){
 				$foreign->references($product->getKeyName())->on($product->getTable())
-					->onUpdate('cascade')->onDelete('cascade');
-			});
-			$migrate->foreign('category_id', function ($foreign) use ($category){
-				$foreign->references($category->getKeyName())->on($category->getTable())
 					->onUpdate('cascade')->onDelete('cascade');
 			});
 		});
